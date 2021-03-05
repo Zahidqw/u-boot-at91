@@ -1,0 +1,8 @@
+NCX1 MK1 BOARD
+M:	JB Maniago <j.maniago@cabsy.bg>
+S:	Maintained
+F:	board/atmel/ncx1_mk1/
+F:	include/configs/ncx1_mk1.h
+F:	configs/ncx1_mk1_mmc_defconfig
+F:	configs/ncx1_mk1_nandflash_defconfig
+F:	configs/ncx1_mk1_qspiflash_defconfig

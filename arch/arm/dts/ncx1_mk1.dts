@@ -7,7 +7,7 @@
  * Author: Sandeep Sheriker M <Sandeepsheriker.mallikarjun@microchip.com>
  */
 /dts-v1/;
-#include "ncx1-sam9.dtsi"
+#include "sam9x60.dtsi"
 
 / {
 	model = "NCX1 MK1";

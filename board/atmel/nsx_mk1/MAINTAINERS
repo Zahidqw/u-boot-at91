@@ -1,0 +1,8 @@
+NSX MK1 BOARD
+M:	JB Maniago <j.maniago@cabsy.com>
+S:	Maintained
+F:	board/atmel/nsx_mk1/
+F:	include/configs/nsx_mk1.h
+F:	configs/nsx_mk1_mmc_defconfig
+F:	configs/nsx_mk1_nandflash_defconfig
+F:	configs/nsx_mk1_qspiflash_defconfig

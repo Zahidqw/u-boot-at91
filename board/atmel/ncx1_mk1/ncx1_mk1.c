@@ -106,13 +106,15 @@ int board_early_init_f(void)
 }
 #endif
 
-#define MAC24AA_MAC_OFFSET     0xfa
+// #define MAC24AA_MAC_OFFSET     0xfa
+// at91_set_ethaddr(MAC24AA_MAC_OFFSET);
+#define AT24MAC_MAC_OFFSET	0x9a
 
 #ifdef CONFIG_MISC_INIT_R
 int misc_init_r(void)
 {
 #ifdef CONFIG_I2C_EEPROM
-	at91_set_ethaddr(MAC24AA_MAC_OFFSET);
+	at91_set_ethaddr(AT24MAC_MAC_OFFSET);
 #endif
 	return 0;
 }

@@ -60,9 +60,9 @@
 					clocks = <&flx0_clk>;
 					status = "okay";
 
-					eeprom@5a {
+					eeprom@5e {
 						compatible = "atmel,24mac402";
-						reg = <0x5a>;
+						reg = <0x5e>;
 						// pagesize = <16>;
 					};
 				};

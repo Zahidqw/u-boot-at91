@@ -61,9 +61,9 @@
 					status = "okay";
 
 					eeprom@5a {
-						compatible = "atmel,at24mac";
+						compatible = "atmel,24mac402";
 						reg = <0x5a>;
-						pagesize = <16>;
+						// pagesize = <16>;
 					};
 				};
 			};

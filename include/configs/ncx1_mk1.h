@@ -67,7 +67,6 @@
 /*Testing Bank A/B */
  #define CONFIG_EXTRA_ENV_SETTINGS \
  		CONFIG_PLATFORM_ENV_SETTINGS \
-
 		"console=ttyS0,115200\0" \
 		"bank_select_files=if test ${bank} = a; "\ 
 					"then " \ 
@@ -84,7 +83,6 @@
 		"bank=a\0" \
 		"kernel_boot=kernel_a\0" \
 		"dtb_boot=dtb_a\0"
-
 
 #ifdef CONFIG_SD_BOOT
 /* bootstrap + u-boot + env + linux in sd card */

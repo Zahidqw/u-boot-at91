@@ -67,6 +67,8 @@
 /*Testing Bank A/B */
  #define CONFIG_EXTRA_ENV_SETTINGS \
  		CONFIG_PLATFORM_ENV_SETTINGS \
+
+		"console=ttyS0,115200\0" \
 		"bank_select_files=if test ${bank} = a; "\ 
 					"then " \ 
 						"echo Booting Bank A ; " \ 
@@ -82,10 +84,7 @@
 		"bank=a\0" \
 		"kernel_boot=kernel_a\0" \
 		"dtb_boot=dtb_a\0"
-/*Testing Bank A/B */
-part /boot --source bootimg-partition --ondisk mmcblk0 --fstype=ext4 --label boot --align 1024 --use-uuid --extra-space 50 --mkfs-extraopts="-O ^metadata_csum"
-part --source rootfs --fstype=ext4 --ondisk mmcblk0 --use-uuid --label root_a --align 1024 --extra-space 300
-part --source rootfs --fstype=ext4 --ondisk mmcblk0 --use-uuid --label root_b --align 1024 --extra-space 300
+
 
 #ifdef CONFIG_SD_BOOT
 /* bootstrap + u-boot + env + linux in sd card */

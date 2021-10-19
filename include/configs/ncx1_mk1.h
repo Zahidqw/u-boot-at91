@@ -10,6 +10,7 @@
 #ifndef __CONFIG_H__
 #define __CONFIG_H__
 
+
 /* ARM asynchronous clock */
 #define CONFIG_SYS_AT91_SLOW_CLOCK	32768
 #define CONFIG_SYS_AT91_MAIN_CLOCK	24000000	/* 24 MHz crystal */
@@ -61,6 +62,30 @@
 #define CONFIG_PMECC_SECTOR_SIZE	512
 
 #define CONFIG_SYS_LOAD_ADDR		0x22000000	/* load address */
+
+
+/*Testing Bank A/B */
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+ 		CONFIG_PLATFORM_ENV_SETTINGS \
+		"bank_select_files=if test ${bank} = a; "\ 
+					"then " \ 
+						"echo Booting Bank A ; " \ 
+						"setenv bootargs console=ttyAMA0 root=/dev/mmcblk0p2; " \
+						"setenv kernel_boot kernel_a; " \
+						"setenv dtb_boot dtb_a ;" \ 
+					"else " \ 
+						"echo Booting Bank B; " \ 
+						"setenv bootargs console=ttyAMA0 root=/dev/mmcblk0p3; " \ 
+						"setenv kernel_boot kernel_b; " \
+						"setenv dtb_boot dtb_b; " \
+					"fi;\0" \
+		"bank=a\0" \
+		"kernel_boot=kernel_a\0" \
+		"dtb_boot=dtb_a\0"
+/*Testing Bank A/B */
+part /boot --source bootimg-partition --ondisk mmcblk0 --fstype=ext4 --label boot --align 1024 --use-uuid --extra-space 50 --mkfs-extraopts="-O ^metadata_csum"
+part --source rootfs --fstype=ext4 --ondisk mmcblk0 --use-uuid --label root_a --align 1024 --extra-space 300
+part --source rootfs --fstype=ext4 --ondisk mmcblk0 --use-uuid --label root_b --align 1024 --extra-space 300
 
 #ifdef CONFIG_SD_BOOT
 /* bootstrap + u-boot + env + linux in sd card */

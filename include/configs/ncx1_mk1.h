@@ -66,23 +66,23 @@
 
 /*Testing Bank A/B */
  #define CONFIG_EXTRA_ENV_SETTINGS \
- 		CONFIG_PLATFORM_ENV_SETTINGS \
-		"console=ttyS0,115200\0" \
-		"bank_select_files=if test ${bank} = a; "\ 
-					"then " \ 
-						"echo Booting Bank A ; " \ 
-						"setenv bootargs console=ttyAMA0 root=/dev/mmcblk0p2; " \
-						"setenv kernel_boot kernel_a; " \
-						"setenv dtb_boot dtb_a ;" \ 
-					"else " \ 
-						"echo Booting Bank B; " \ 
-						"setenv bootargs console=ttyAMA0 root=/dev/mmcblk0p3; " \ 
-						"setenv kernel_boot kernel_b; " \
-						"setenv dtb_boot dtb_b; " \
-					"fi;\0" \
-		"bank=a\0" \
-		"kernel_boot=kernel_a\0" \
-		"dtb_boot=dtb_a\0"
+ CONFIG_PLATFORM_ENV_SETTINGS \
+		 "console=ttyS0,115200\0"\
+		 "bank_select_files=if test ${bank} = a;"\
+		 "then"\
+		 "echo Booting Bank A;"\
+		 "setenv bootargs console=ttyS0,115200 root=/dev/mmcblk0p2;"\
+		 "setenv kernel_boot kernel_a;"\
+		 "setenv dtb_boot dtb_a;"\
+		 "else"\
+		 "echo Booting Bank B;"\
+		 "setenv bootargs console=ttyS0,115200 root=/dev/mmcblk0p3;"\
+		 "setenv kernel_boot kernel_b;"\
+		 "setenv dtb_boot dtb_b;"\
+		 "fi;\0"\
+		 "bank=a\0"\
+		 "kernel_boot=kernel_a\0"\
+		 "dtb_boot=dtb_a\0"
 
 #ifdef CONFIG_SD_BOOT
 /* bootstrap + u-boot + env + linux in sd card */

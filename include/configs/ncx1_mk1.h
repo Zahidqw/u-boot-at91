@@ -69,18 +69,6 @@
 #ifdef CONFIG_SD_BOOT
 /* bootstrap + u-boot + env + linux in sd card */
 #define CONFIG_BOOTCOMMAND  \
-			"fatload mmc 0:1 0x21000000 at91-ncx1_mk1.dtb;" \
-			"fatload mmc 0:1 0x22000000 zImage;" \
-			"bootz 0x22000000 - 0x21000000"
-
-#elif defined(CONFIG_NAND_BOOT)
-/* bootstrap + u-boot + env + linux in nandflash */
-#define CONFIG_BOOTCOMMAND	"nand read " \
-				"0x22000000 0x200000 0x600000; " \
-				"nand read 0x21000000 0x180000 0x20000; " \
-				"bootz 0x22000000 - 0x21000000"
-/*Testing Bank A/B */
- #define CONFIG_EXTRA_ENV_SETTINGS \
 		 "console=ttyS0,115200\0"\
 		 "bank_select_files=if test ${bank} = a;"\
 		 "then"\
@@ -97,6 +85,19 @@
 		 "bank=a\0"\
 		 "kernel_boot=kernel_a\0"\
 		 "itb_boot=itb_a\0"
+			// "fatload mmc 0:1 0x21000000 at91-ncx1_mk1.dtb;" \
+			// "fatload mmc 0:1 0x22000000 zImage;" \
+			// "bootz 0x22000000 - 0x21000000"
+
+#elif defined(CONFIG_NAND_BOOT)
+/* bootstrap + u-boot + env + linux in nandflash */
+#define CONFIG_BOOTCOMMAND	"nand read " \
+				"0x22000000 0x200000 0x600000; " \
+				"nand read 0x21000000 0x180000 0x20000; " \
+				"bootz 0x22000000 - 0x21000000"
+/*Testing Bank A/B */
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+
 		 
 #elif defined(CONFIG_QSPI_BOOT)
 /* bootstrap + u-boot + env + linux in SPI NOR flash */

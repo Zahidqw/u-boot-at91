@@ -63,30 +63,12 @@
 
 #define CONFIG_SYS_LOAD_ADDR		0x22000000	/* load address */
 
-/*Testing Bank A/B */
- #define CONFIG_EXTRA_ENV_SETTINGS "myvar1=if test ${bank} = a; "\ 
-					"then " \ 
-						"echo Booting Bank A ; " \ 
-						"setenv bootargs console=ttyS0,115200 root=/dev/mmcblk0p2; " \
-						"setenv kernel_boot kernel_a; " \
-						"setenv itb_boot dtb_a ;" \ 
-					"else " \ 
-						"echo Booting Bank B; " \ 
-						"setenv bootargs console=ttyS0,115200 root=/dev/mmcblk0p3; " \ 
-						"setenv kernel_boot kernel_b; " \
-						"setenv itb_boot dtb_b; " \
-					"fi;\0" \
-		"bank=a\0" \
-		"kernel_boot=kernel_a\0" \
-		"itb_boot=dtb_a\0"
-
 #ifdef CONFIG_SD_BOOT
 /* bootstrap + u-boot + env + linux in sd card */
 #define CONFIG_BOOTCOMMAND  \
-"run myvar1; saveenv; fatload mmc 0:1 0x24000000 ${kernel_boot}; fatload mmc 0:1 0x25F00000 ${itb_boot}; bootz 0x24000000 - 0x25F00000"
-			// "fatload mmc 0:1 0x21000000 at91-ncx1_mk1.dtb;" \
-			// "fatload mmc 0:1 0x22000000 zImage;" \
-			// "bootz 0x22000000 - 0x21000000"
+			"fatload mmc 0:1 0x21000000 at91-ncx1_mk1.dtb;" \
+			"fatload mmc 0:1 0x22000000 zImage;" \
+			"bootz 0x22000000 - 0x21000000"
 
 #elif defined(CONFIG_NAND_BOOT)
 /* bootstrap + u-boot + env + linux in nandflash */

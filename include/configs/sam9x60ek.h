@@ -89,4 +89,6 @@
  */
 #define CONFIG_SYS_MALLOC_LEN		(512 * 1024 + 0x1000)
 
+#define CONFIG_BOOTDELAY		10
+
 #endif
